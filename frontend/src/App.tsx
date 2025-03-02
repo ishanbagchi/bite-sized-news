@@ -1,6 +1,7 @@
+import { ReactElement } from 'react'
 import Navbar from './components/navbar.component'
 
-const App = () => {
+const App = (): ReactElement => {
 	return <Navbar />
 }
 
