@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { ReactElement, useCallback, useState } from 'react'
 const logo = new URL('../images/logo.png', import.meta.url).href
 
@@ -61,11 +61,14 @@ const Navbar = (): ReactElement => {
 	)
 
 	return (
-		<nav className="navbar">
-			{renderAppName}
-			{renderSearchBox}
-			{renderRightSection}
-		</nav>
+		<>
+			<nav className="navbar">
+				{renderAppName}
+				{renderSearchBox}
+				{renderRightSection}
+			</nav>
+			<Outlet />
+		</>
 	)
 }
 
