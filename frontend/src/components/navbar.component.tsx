@@ -54,7 +54,7 @@ const Navbar = (): ReactElement => {
 				<p>Login</p>
 			</Link>
 
-			<Link to="/login" className="btn-light hidden md:block py-2">
+			<Link to="/register" className="btn-light hidden md:block py-2">
 				<p>Sign Up</p>
 			</Link>
 		</div>
