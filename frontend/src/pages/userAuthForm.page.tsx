@@ -3,6 +3,7 @@ import InputBox from '../components/input.component'
 import { UserAuthTypeEnum } from './enums/UserAuthType.enum'
 import { getHeaderText, getSubmitButtonText } from './utils/userAuthForm.util'
 import { Link, To } from 'react-router-dom'
+import AnimationWrapper from '../common/page-animation'
 const googleIcon = new URL('../images/google.png', import.meta.url).href
 
 interface Props {
@@ -89,19 +90,21 @@ const UserAuthForm: React.FC<Props> = ({ type }) => {
 	)
 
 	return (
-		<section className="h-cover flex items-center justify-center">
-			<form action="" className="w-[80%] max-w-[400px]">
-				{renderHeader}
-				{renderNameInput}
-				{renderEmailInput}
-				{renderPasswordInput}
-				{renderSubmitButton}
+		<AnimationWrapper keyValue={type}>
+			<section className="h-cover flex items-center justify-center">
+				<form action="" className="w-[80%] max-w-[400px]">
+					{renderHeader}
+					{renderNameInput}
+					{renderEmailInput}
+					{renderPasswordInput}
+					{renderSubmitButton}
 
-				{renderOrDivider}
-				{renderContinueWithGoogleButton}
-				{renderLoginRegisterRedirectSection}
-			</form>
-		</section>
+					{renderOrDivider}
+					{renderContinueWithGoogleButton}
+					{renderLoginRegisterRedirectSection}
+				</form>
+			</section>
+		</AnimationWrapper>
 	)
 }
 
