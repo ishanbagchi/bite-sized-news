@@ -33,7 +33,6 @@ const userSchema = mongoose.Schema(
 		personal_info: {
 			fullname: {
 				type: String,
-				lowercase: true,
 				required: true,
 				minlength: [3, 'fullname must be 3 letters long'],
 			},

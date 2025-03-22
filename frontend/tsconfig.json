@@ -28,6 +28,10 @@
     "sourceMap": true,
     "inlineSources": true,
     "jsx": "react-jsx",
+    "types": [
+      "node",
+      "vite/client"
+    ]
   },
   "include": [
     "src"

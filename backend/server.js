@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 import { customAlphabet } from 'nanoid'
 import jwt from 'jsonwebtoken'
+import cors from 'cors'
 
 import 'dotenv/config'
 import User from './Schema/User.js'
@@ -10,10 +11,11 @@ import User from './Schema/User.js'
 const app = express()
 const PORT = 3000
 
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ // regex for email
-const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/ // regex for password
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,30}$/
 
 app.use(express.json())
+app.use(cors())
 
 if (process.env.DB_LOCATION) {
 	mongoose
@@ -52,7 +54,7 @@ const formatDataToSend = (user) => {
 	}
 }
 
-app.post('/register', (req, res) => {
+app.post('/api/register', (req, res) => {
 	const { fullname, email, password } = req.body
 
 	if (!fullname || !email || !password) {
@@ -103,7 +105,7 @@ app.post('/register', (req, res) => {
 	})
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
 	const { email, password } = req.body
 
 	if (!email || !password) {
