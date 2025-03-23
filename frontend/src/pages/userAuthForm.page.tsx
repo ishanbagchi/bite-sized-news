@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import InputBox from '../components/input.component'
 import { UserAuthTypeEnum } from './enums/UserAuthType.enum'
 import {
@@ -7,12 +7,13 @@ import {
 	loginFormValidation,
 	registerFormValidation,
 } from './utils/userAuthForm.util'
-import { Link, To } from 'react-router-dom'
+import { Link, Navigate, To } from 'react-router-dom'
 import AnimationWrapper from '../common/page-animation'
 import { Toaster, toast } from 'react-hot-toast'
 import { ValidationStatusEnum } from '../common/enums/ValidationStatus.enum'
 import { useUserAuth } from '../apis/authRoutes.api'
 import { LOWER_OR } from '../common/constants/common.constants'
+import { UserContext } from '../App'
 const googleIcon = new URL('../images/google.png', import.meta.url).href
 
 interface Props {
@@ -20,6 +21,11 @@ interface Props {
 }
 
 const UserAuthForm: React.FC<Props> = ({ type }) => {
+	const {
+		userAuth: { access_token },
+		setUserAuth,
+	} = useContext(UserContext)
+
 	const isTypeLogin = type === UserAuthTypeEnum.LOGIN
 	const authPageConfig = authPageConstantsConfig(isTypeLogin)
 	const [isPasswordVisible, setIsPasswordVisible] = useState(false)
@@ -95,11 +101,14 @@ const UserAuthForm: React.FC<Props> = ({ type }) => {
 			return
 		}
 
-		useUserAuth(type)({
-			name,
-			email,
-			password,
-		})
+		useUserAuth(type)(
+			{
+				name,
+				email,
+				password,
+			},
+			setUserAuth,
+		)
 	}
 
 	const renderSubmitButton = (
@@ -125,7 +134,9 @@ const UserAuthForm: React.FC<Props> = ({ type }) => {
 		</h1>
 	)
 
-	return (
+	return access_token ? (
+		<Navigate to="/" replace={true} />
+	) : (
 		<AnimationWrapper keyValue={type}>
 			<section className="h-cover flex items-center justify-center">
 				<Toaster />

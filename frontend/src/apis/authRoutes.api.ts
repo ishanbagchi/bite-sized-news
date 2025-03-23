@@ -6,13 +6,16 @@ import {
 	USER_REGISTER_SUCCESS,
 } from '../common/constants/validation.constants'
 
-export const userLoginApi = ({
-	email,
-	password,
-}: {
-	email: string
-	password: string
-}) => {
+export const userLoginApi = (
+	{
+		email,
+		password,
+	}: {
+		email: string
+		password: string
+	},
+	setUserAuth: (data: Record<string, unknown>) => void,
+) => {
 	axios
 		.post(import.meta.env.VITE_SERVER_DOMAIN + '/api/login', {
 			email,
@@ -20,20 +23,24 @@ export const userLoginApi = ({
 		})
 		.then((res) => {
 			sessionStorage.setItem('user', JSON.stringify(res.data))
+			setUserAuth(res.data)
 			toast.success(USER_LOGIN_SUCCESS)
 		})
 		.catch((err) => toast.error(err.response.data.error))
 }
 
-export const userRegisterApi = ({
-	name,
-	email,
-	password,
-}: {
-	name: string
-	email: string
-	password: string
-}) => {
+export const userRegisterApi = (
+	{
+		name,
+		email,
+		password,
+	}: {
+		name: string
+		email: string
+		password: string
+	},
+	setUserAuth: (data: Record<string, unknown>) => void,
+) => {
 	axios
 		.post(import.meta.env.VITE_SERVER_DOMAIN + '/api/register', {
 			fullname: name,
@@ -42,6 +49,7 @@ export const userRegisterApi = ({
 		})
 		.then((res) => {
 			sessionStorage.setItem('user', JSON.stringify(res.data))
+			setUserAuth(res.data)
 			toast.success(USER_REGISTER_SUCCESS)
 		})
 		.catch((err) => toast.error(err.response.data.error))

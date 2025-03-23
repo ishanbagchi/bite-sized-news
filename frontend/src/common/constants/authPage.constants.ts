@@ -1,9 +1,9 @@
 export const REGISTER_ROUTE = '/register'
 export const LOGIN_ROUTE = '/login'
-export const REGISTER_FORM_LINK_TEXT = 'Join Us Today'
-export const LOGIN_FORM_LINK_TEXT = 'Login Here.'
-export const REGISTER_FORM_QUESTION = "Don't have an account?"
-export const LOGIN_FORM_QUESTION = 'Already have an account?'
+export const REGISTER_FORM_LINK_TEXT = 'Login Here.'
+export const LOGIN_FORM_LINK_TEXT = 'Join Us Today.'
+export const REGISTER_FORM_QUESTION = 'Already have an account?'
+export const LOGIN_FORM_QUESTION = "Don't have an account?"
 export const REGISTER_SUBMIT_BUTTON_TEXT = 'Register'
 export const LOGIN_SUBMIT_BUTTON_TEXT = 'Login'
 export const REGISTER_HEADER_TEXT = 'Join Us'

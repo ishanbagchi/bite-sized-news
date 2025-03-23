@@ -14,20 +14,19 @@ import * as authPageConstants from '../../common/constants/authPage.constants'
 export const authPageConstantsConfig = (isTypeLogin: boolean) => {
 	const loginRegisterConstants = isTypeLogin
 		? {
-				questionText: authPageConstants.REGISTER_FORM_QUESTION,
-				linkText: authPageConstants.REGISTER_FORM_LINK_TEXT,
-				linkTarget: authPageConstants.REGISTER_ROUTE,
-				submitButtonText: authPageConstants.REGISTER_SUBMIT_BUTTON_TEXT,
-				headerText: authPageConstants.REGISTER_HEADER_TEXT,
-		  }
-		: {
 				questionText: authPageConstants.LOGIN_FORM_QUESTION,
 				linkText: authPageConstants.LOGIN_FORM_LINK_TEXT,
 				linkTarget: authPageConstants.LOGIN_ROUTE,
 				submitButtonText: authPageConstants.LOGIN_SUBMIT_BUTTON_TEXT,
 				headerText: authPageConstants.LOGIN_HEADER_TEXT,
 		  }
-
+		: {
+				questionText: authPageConstants.REGISTER_FORM_QUESTION,
+				linkText: authPageConstants.REGISTER_FORM_LINK_TEXT,
+				linkTarget: authPageConstants.REGISTER_ROUTE,
+				submitButtonText: authPageConstants.REGISTER_SUBMIT_BUTTON_TEXT,
+				headerText: authPageConstants.REGISTER_HEADER_TEXT,
+		  }
 	return {
 		...loginRegisterConstants,
 		namePlaceholder: authPageConstants.NAME_PLACEHOLDER,
