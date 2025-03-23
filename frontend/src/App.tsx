@@ -6,7 +6,7 @@ import { UserAuthTypeEnum } from './pages/enums/UserAuthType.enum'
 import { getFromSession } from './common/session'
 
 export const UserContext = React.createContext<{
-	userAuth: any
+	userAuth: Record<string, unknown>
 	setUserAuth: (data: Record<string, unknown>) => void
 }>({
 	userAuth: {},
